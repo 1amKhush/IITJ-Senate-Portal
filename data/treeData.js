@@ -627,14 +627,16 @@ export const treeData = {
       type: 'club',
       position: { x: 3600, y: 800 }
     },
+
+    // ACAC committees
     {
       id: 'international-relations',
       name: 'International Relations Student Team',
       fullName: 'International Relations Student Team',
       holder: '',
-      parent: 'bcca',
-      type: 'club',
-      position: { x: 4000, y: 800 }
+      parent: 'acac',
+      type: 'committee',
+      position: { x: 2200, y: 800 }
     }
   ]
 };

@@ -8,6 +8,7 @@ import { ChevronDown } from "lucide-react"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/tree", label: "Senate Structure" },
+  { href: "/senate", label: "Meet the senate" },
   {
     href: "/senate",
     label: "Student Body Directory",
@@ -189,15 +190,6 @@ const DesktopNavLinks: FC<{
                         <Link href="/senate#athletics-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Athletics</Link>
                         <Link href="/senate#squash-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Squash</Link>
                         <Link href="/senate#hockey-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Hockey</Link>
-                      </div>
-
-
-                      {/* Sports Clubs Column */}
-                      <div className="space-y-3">
-                        <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
-                          Sports & Others
-                        </h3>
-                        
                       </div>
                     </div>
                   </div>
