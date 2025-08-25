@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "IIT Jodhpur Senate Portal",
-  description: "TODO: Add description",
+  description: "Explore the structure and members of the IIT Jodhpur Student Senate.",
 };
 
 export default function RootLayout({
