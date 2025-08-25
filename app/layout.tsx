@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "IIT Jodhpur Senate Portal",
+  title: "IIT Jodhpur Student Senate Portal",
   description: "Explore the structure and members of the IIT Jodhpur Student Senate.",
 };
 
