@@ -340,6 +340,14 @@ export const IRteam = [
     contactInfo: "",
     socialLinks: [],
   },
+  {
+    title: "CCCD Student Team",
+    description: "Society focusing on international relations and initiatives.",
+    imageurl: "/images/clubs/saa/ir.png",
+    holder: "",
+    contactInfo: "",
+    socialLinks: [],
+  },
 ];
 
 export const SAAClubs = [

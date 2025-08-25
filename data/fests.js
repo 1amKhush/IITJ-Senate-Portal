@@ -183,29 +183,29 @@ export const fests = [
         ],
         "porHolders": []
     },
-    {
-        "title": "TEDxIITJodhpur",
-        "description": "TEDxIITJodhpur is a licensed TEDx event that brings thought leaders, visionaries, and changemakers to share their stories and ideas worth spreading.",
-        "backgroundUrl": "/images/fests/bg/tedx.jpg",
-        "logoUrl": "",
-        "date": "September 28, 2024",
-        "website": "https://tedx.iitj.ac.in",
-        "navlinks": [
-            {
-                "label": "View in Detail",
-                "href": "https://tedx.iitj.ac.in"
-            },
-            {
-                "label": "Website",
-                "href": "https://tedx.iitj.ac.in"
-            },
-            {
-                "label": "Instagram",
-                "href": "https://www.instagram.com/tedxiitjodhpur"
-            }
-        ],
-        "porHolders": []
-    },
+    // {
+    //     "title": "TEDxIITJodhpur",
+    //     "description": "TEDxIITJodhpur is a licensed TEDx event that brings thought leaders, visionaries, and changemakers to share their stories and ideas worth spreading.",
+    //     "backgroundUrl": "/images/fests/bg/tedx.jpg",
+    //     "logoUrl": "",
+    //     "date": "September 28, 2024",
+    //     "website": "https://tedx.iitj.ac.in",
+    //     "navlinks": [
+    //         {
+    //             "label": "View in Detail",
+    //             "href": "https://tedx.iitj.ac.in"
+    //         },
+    //         {
+    //             "label": "Website",
+    //             "href": "https://tedx.iitj.ac.in"
+    //         },
+    //         {
+    //             "label": "Instagram",
+    //             "href": "https://www.instagram.com/tedxiitjodhpur"
+    //         }
+    //     ],
+    //     "porHolders": []
+    // },
     {
         "title": "Sandstone Summit",
         "description": "Sandstone Summit is the leadership and entrepreneurship conclave of IIT Jodhpur, bringing together industry experts, innovators, and startups to inspire the next generation of leaders.",

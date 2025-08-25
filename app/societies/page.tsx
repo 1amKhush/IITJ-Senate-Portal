@@ -291,12 +291,12 @@ const Societies = () => {
 
                 {/* Communities Section */}
                 <section id="communities-section" className="mb-20 scroll-mt-20">
-                    <SectionTitle>Student Communities</SectionTitle>
+                    <SectionTitle>Student Committees</SectionTitle>
                     <div className="space-y-16">
                         {/* SAC Communities */}
                         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-700">
                             <h3 className="text-3xl font-semibold text-center text-indigo-300 mb-8">
-                                Communities under SAC
+                                Committees affilated with SAC
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {SAC_communities.map((community, index) => (
@@ -317,7 +317,7 @@ const Societies = () => {
                         {/* ACAC Communities */}
                         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-700">
                             <h3 className="text-3xl font-semibold text-center text-rose-300 mb-8">
-                                Communities under ACAC
+                                Committees affilated with ACAC
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {ACAC_communities.map((community, index) => (
@@ -338,7 +338,7 @@ const Societies = () => {
                         {/* SS Communities */}
                         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-700">
                             <h3 className="text-3xl font-semibold text-center text-amber-300 mb-8">
-                                Communities affilated with Student Senate
+                                Committees affilated with SS
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {SS_communities.map((community, index) => (

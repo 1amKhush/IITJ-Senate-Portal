@@ -245,7 +245,7 @@ const Footer: React.FC = () => {
           <ul className="space-y-2 text-gray-300 text-base">
             <li><a href="/visit-iitj" className="hover:text-white transition">Visit IITJ</a></li>
             <li><a href="/societies" className="hover:text-white transition">Student Bodies</a></li>
-            <li><a href="/senate" className="hover:text-white transition">Meet the Senate</a></li>
+            {/* <li><a href="/senate" className="hover:text-white transition">Meet the Senate</a></li> */}
             <li><a href="https://iitj.ac.in/PageImages/Gallery/07-2025/Academic-Calendar-AY-202526SemI2-with-CCCD-events-638871414539740843.pdf" className="hover:text-white transition" target="_blank" rel="noopener noreferrer">Activity Calendar</a></li>
             <li><a href="/pdfs/constitution.pdf" className="hover:text-white transition" target="_blank" rel="noopener noreferrer">Constitution</a></li>
             <li><a href="mailto:student_grievance@iitj.ac.in" className="hover:text-white transition">Student Grievances</a></li>

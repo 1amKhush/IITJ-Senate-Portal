@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "swc.iitj.ac.in",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

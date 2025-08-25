@@ -13,7 +13,7 @@ export default function TreeLayout({
   return (
     <>
       <div className="bg-gray-900 h-18"></div>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen bg-gray-900">
         {children}
       </div>
     </>

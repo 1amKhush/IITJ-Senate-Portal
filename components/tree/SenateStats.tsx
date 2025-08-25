@@ -19,10 +19,10 @@ const StatCard: React.FC<StatCardProps> = ({ icon, title, count, description, co
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className={`bg-gradient-to-br ${color} rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-shadow`}
+      className={`bg-gray-800 rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-shadow border border-gray-700`}
     >
       <div className="flex items-center justify-between mb-4">
-        <div className="p-3 bg-white/20 rounded-lg">
+        <div className={`p-3 rounded-lg ${color}`}>
           {icon}
         </div>
         <motion.span
@@ -35,7 +35,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, title, count, description, co
         </motion.span>
       </div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-sm opacity-90">{description}</p>
+      <p className="text-sm text-gray-400">{description}</p>
     </motion.div>
   );
 };
@@ -55,7 +55,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Main Councils",
       count: data.mainBodies.length,
       description: "Core governing bodies of the student senate",
-      color: "from-blue-500 to-blue-600",
+      color: "bg-blue-500/20 text-blue-300",
       delay: 0,
     },
     {
@@ -63,7 +63,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Boards",
       count: data.boards.length,
       description: "Specialized administrative boards",
-      color: "from-green-500 to-green-600",
+      color: "bg-green-500/20 text-green-300",
       delay: 0.1,
     },
     {
@@ -71,7 +71,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Clubs & Committees",
       count: data.clubs.length,
       description: "Active student organizations and committees",
-      color: "from-purple-500 to-purple-600",
+      color: "bg-purple-500/20 text-purple-300",
       delay: 0.2,
     },
     {
@@ -79,7 +79,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Total Positions",
       count: data.mainBodies.length + data.boards.length + data.clubs.length,
       description: "Leadership positions across all levels",
-      color: "from-orange-500 to-orange-600",
+      color: "bg-orange-500/20 text-orange-300",
       delay: 0.3,
     },
   ];

@@ -7,11 +7,10 @@ import { ChevronDown } from "lucide-react"
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/societies", label: "Student Bodies" },
-  { href: "/tree", label: "Senate Tree" },
+  { href: "/tree", label: "Senate Structure" },
   {
     href: "/senate",
-    label: "Meet the Senate",
+    label: "Student Body Directory",
     hasDropdown: true
   },
   { href: "/events", label: "Events" },
@@ -115,7 +114,7 @@ const DesktopNavLinks: FC<{
                       <div className="space-y-4">
                         <div className="space-y-3">
                           <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
-                            Leadership
+                            Student Senate
                           </h3>
                           <Link
                             href="/senate#gen-secs"
@@ -135,21 +134,33 @@ const DesktopNavLinks: FC<{
                         {/* Cultural clubs */}
                         <div className="space-y-3">
                           <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
-                            Cultural
+                            BAC
                           </h3>
                           <Link href="/senate#raw" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">RAW</Link>
                           <Link href="/senate#designerds" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Designerds</Link>
                           <Link href="/senate#sangam" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Sangam</Link>
+                          <Link href="/senate#shutterbugs" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">RAW</Link>
+                          <Link href="/senate#Atliers" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Designerds</Link>
+                          <Link href="/senate#sangam" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Sangam</Link>
+                        </div>
+
+                        <div className="space-y-3">
+                          <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
+                            BLA
+                          </h3>
                           <Link href="/senate#quiz-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Quiz Society</Link>
                           <Link href="/senate#literature-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Literature Society</Link>
                           <Link href="/senate#pheme" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">PHEME</Link>
-                        </div>
                       </div>
+
+                      </div>
+
+                      
 
                       {/* Technical Clubs Column */}
                       <div className="space-y-3">
                         <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
-                          Technical
+                          BCCA  
                         </h3>
                         <Link href="/senate#robotics-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Robotics Society</Link>
                         <Link href="/senate#devlup-labs" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Devlup Labs</Link>
@@ -163,12 +174,11 @@ const DesktopNavLinks: FC<{
                         <Link href="/senate#inside" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">InSiDe</Link>
                       </div>
 
-
-                      {/* Sports Clubs Column */}
                       <div className="space-y-3">
                         <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
-                          Sports & Others
+                          BSS  
                         </h3>
+                        <Link href="/senate#respawn" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Respawn</Link>
                         <Link href="/senate#chess-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Chess Society</Link>
                         <Link href="/senate#table-tennis-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Table Tennis</Link>
                         <Link href="/senate#football-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Football Society</Link>
@@ -179,6 +189,15 @@ const DesktopNavLinks: FC<{
                         <Link href="/senate#athletics-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Athletics</Link>
                         <Link href="/senate#squash-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Squash</Link>
                         <Link href="/senate#hockey-society" onClick={() => setDropdownOpen(false)} className="block py-1 px-2 text-sm text-gray-200 hover:text-fulvous hover:bg-white/5 rounded transition-all duration-200">Hockey</Link>
+                      </div>
+
+
+                      {/* Sports Clubs Column */}
+                      <div className="space-y-3">
+                        <h3 className="text-fulvous font-bold text-sm uppercase tracking-wide border-b border-fulvous/30 pb-2">
+                          Sports & Others
+                        </h3>
+                        
                       </div>
                     </div>
                   </div>
