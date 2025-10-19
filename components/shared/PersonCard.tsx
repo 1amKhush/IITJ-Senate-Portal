@@ -36,7 +36,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
           src={person.image}
           alt={person.name}
           fill
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out group-hover:scale-110"
+          className="object-cover transition-all duration-500 ease-in-out group-hover:scale-110"
           onError={(e) => {
             // Fallback to a default image if the provided one fails
             (e.target as HTMLImageElement).onerror = null; 

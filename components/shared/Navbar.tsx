@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/tree", label: "Senate Structure" },
-  { href: "/societies", label: "Student bodies" },
+  // { href: "/societies", label: "Student bodies" },
   {
     href: "/senate",
     label: "Student Body Directory",
