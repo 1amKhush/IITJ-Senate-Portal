@@ -1,8 +1,10 @@
 "use client"
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { ExternalLink, User, Mail, Building2 } from 'lucide-react';
 
 interface Council {
   title: string;
@@ -15,152 +17,188 @@ interface Council {
 }
 
 const CouncilCard: React.FC<{ council: Council }> = ({ council }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  const title = council.title;
-  const logoUrl = council.imageurl;
-  const holderName = council.holder;
-  const about = council.about;
-  const contactInfo = council.contactInfo;
-  const socialLinks = council.socialLinks || [];
+  const { title, imageurl: logoUrl, holder: holderName, about, contactInfo, socialLinks = [] } = council;
 
-  const linkedInUrl = council.socialLinks.find(link => link.label.toLowerCase() === 'linkedin')?.href;
-  const instagramUrl = council.socialLinks.find(link => link.label.toLowerCase() === 'instagram')?.href;
-  const facebookUrl = council.socialLinks.find(link => link.label.toLowerCase() === 'facebook')?.href;
+  const linkedInUrl = socialLinks.find(link => link.label.toLowerCase() === 'linkedin')?.href;
+  const instagramUrl = socialLinks.find(link => link.label.toLowerCase() === 'instagram')?.href;
+  const facebookUrl = socialLinks.find(link => link.label.toLowerCase() === 'facebook')?.href;
 
+  // Spotlight effect handler
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    cardRef.current.style.setProperty('--mouse-x', `${x}%`);
+    cardRef.current.style.setProperty('--mouse-y', `${y}%`);
+  };
 
   return (
-    <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 border border-gray-200 rounded-3xl p-8 flex flex-col lg:flex-row gap-8 shadow-2xl hover:shadow-3xl transition-all duration-300  relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E58420] to-[#323273] opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#262872] to-[#E58420] opacity-10 rounded-full translate-y-12 -translate-x-12"></div>
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      onMouseMove={handleMouseMove}
+      className="glass-card rounded-3xl overflow-hidden spotlight-card group"
+    >
+      {/* Top Gradient Accent */}
+      <div className="h-2 bg-gradient-to-r from-blue-500 via-fulvous to-purple-500" />
+      
+      <div className="p-8 flex flex-col lg:flex-row gap-8">
+        {/* Left Content */}
+        <div className="flex-1 flex flex-col gap-6">
+          {/* Header with Icon */}
+          <div className="flex items-start gap-4">
+            <motion.div 
+              className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Building2 className="w-7 h-7 text-blue-400" />
+            </motion.div>
+            <div>
+              <h3 className="font-bold text-2xl text-white mb-2 group-hover:text-fulvous transition-colors duration-300">
+                {title}
+              </h3>
+              <div className="w-20 h-1 bg-gradient-to-r from-fulvous to-fulvous-light rounded-full" />
+            </div>
+          </div>
 
-      <div className="flex-1 flex flex-col gap-6 z-10">
-        {/* Title */}
-        <div className="relative">
-          <h3 className="font-bold text-3xl text-[#060616] mb-2 relative z-10">
-            {title}
-          </h3>
-          <div className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-[#E58420] to-[#323273] rounded-full"></div>
+          {/* About Section */}
+          <motion.div 
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-fulvous/30 transition-all duration-300"
+            whileHover={{ y: -2 }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-2 h-2 bg-fulvous rounded-full" />
+              <span className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
+                About
+              </span>
+            </div>
+            <p className="text-gray-300 leading-relaxed">{about}</p>
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.div 
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300"
+            whileHover={{ y: -2 }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-2 h-2 bg-purple-400 rounded-full" />
+              <span className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
+                Contact
+              </span>
+            </div>
+            <div className="flex items-center gap-3 mb-2">
+              <User className="w-4 h-4 text-fulvous" />
+              <p className="font-bold text-white text-lg">{holderName}</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail className="w-4 h-4 text-gray-500" />
+              <p className="text-gray-400">{contactInfo}</p>
+            </div>
+          </motion.div>
         </div>
 
-        {/* About Section */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-[#E58420] rounded-full"></div>
-            <span className="font-semibold text-[#323273] text-sm uppercase tracking-wide">
-              About
-            </span>
-          </div>
-          <p className="text-[#060616] leading-relaxed">{about}</p>
-        </div>
+        {/* Right Side */}
+        <div className="flex flex-col items-center gap-6 min-w-[280px]">
+          {/* Logo Section */}
+          <motion.div 
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-fulvous/30 transition-all duration-300 w-full"
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-fulvous/20 to-purple-500/10 flex items-center justify-center border border-white/10 shadow-inner">
+              {logoUrl ? (
+                <Image
+                  src={logoUrl}
+                  alt="Council Logo"
+                  width={100}
+                  height={100}
+                  className="rounded-xl object-cover"
+                />
+              ) : (
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-fulvous to-purple-500 rounded-xl mx-auto flex items-center justify-center">
+                    <Building2 className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
 
-        {/* Contact Info */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-[#262872] rounded-full"></div>
-            <span className="font-semibold text-[#323273] text-sm uppercase tracking-wide">
-              Contact
-            </span>
-          </div>
-          <div className="space-y-2">
-            <p className="font-bold text-[#060616] text-lg">{holderName}</p>
-            <p className="text-[#323273] font-medium">{contactInfo}</p>
-          </div>
-        </div>
-      </div>
+          {/* Social Links */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 w-full hover:border-white/20 transition-all duration-300">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="font-bold text-gray-400 text-xs uppercase tracking-wider">
+                Connect
+              </span>
+            </div>
 
-      {/* Right Side */}
-      <div className="flex flex-col items-center gap-6 min-w-[250px] z-10">
-        {/* Logo Section */}
-        <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#E58420]/20 to-[#323273]/20 flex items-center justify-center shadow-inner border-4 border-white">
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt="Council Logo"
-                width={100}
-                height={100}
-                className="rounded-full object-cover"
-              />
-            ) : (
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E58420] to-[#323273] rounded-full mx-auto mb-2"></div>
-                <span className="text-[#323273] text-xs font-medium">Logo</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-3xl p-6 w-full shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-[#E58420] rounded-full"></div>
-            <span className="font-bold text-[#323273] text-sm uppercase tracking-wide">
-              Social Links
-            </span>
-            <div className="w-2 h-2 bg-[#262872] rounded-full"></div>
-          </div>
-
-          <div className="flex flex-wrap gap-3 justify-center">
-            {socialLinks.length > 0 ? (
-              socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative px-4 py-2 bg-gradient-to-r from-[#E58420] to-[#323273] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:from-[#323273] hover:to-[#262872] text-sm"
+            <div className="flex flex-wrap gap-2 justify-center mb-4">
+              {socialLinks.length > 0 ? (
+                socialLinks.map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 py-2 bg-gradient-to-r from-fulvous to-fulvous-light text-white font-medium rounded-xl text-sm flex items-center gap-2 shadow-glow-fulvous-sm hover:shadow-glow-fulvous transition-all duration-300"
+                  >
+                    {link.label}
+                    <ExternalLink className="w-3 h-3" />
+                  </motion.a>
+                ))
+              ) : (
+                <p className="text-gray-500 text-sm italic">No links available</p>
+              )}
+            </div>
+            
+            {/* Quick Social Icons */}
+            <div className="flex justify-center items-center gap-4 pt-4 border-t border-white/5">
+              {instagramUrl && (
+                <motion.a 
+                  href={instagramUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  className="text-gray-400 hover:text-pink-500 transition-colors duration-200"
                 >
-                  <span className="relative z-10">{link.label}</span>
-                  <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
-              ))
-            ) : (
-              <div className="text-center py-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#E58420]/30 to-[#323273]/30 rounded-full mx-auto mb-2"></div>
-                <span className="text-[#323273]/60 text-sm italic">
-                  No links available
-                </span>
-              </div>
-            )}
+                  <FaInstagram size={22} />
+                </motion.a>
+              )}
+              {linkedInUrl && (
+                <motion.a 
+                  href={linkedInUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                >
+                  <FaLinkedin size={22} />
+                </motion.a>
+              )}
+              {facebookUrl && (
+                <motion.a 
+                  href={facebookUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  className="text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                >
+                  <FaFacebook size={22} />
+                </motion.a>
+              )}
+            </div>
           </div>
         </div>
-        
-        {/* Footer: Social Icons */}
-        <div className="mt-auto flex justify-end items-center gap-4 pt-4">
-          {instagramUrl && (
-            <a 
-              href={instagramUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#323273] hover:text-[#E58420] transition-all duration-200 hover:scale-110"
-            >
-              <FaInstagram size={24} />
-            </a>
-          )}
-          {linkedInUrl && (
-            <a 
-              href={linkedInUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#323273] hover:text-[#E58420] transition-all duration-200 hover:scale-110"
-            >
-              <FaLinkedin size={24} />
-            </a>
-          )}
-          {facebookUrl && (
-            <a 
-              href={facebookUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#323273] hover:text-[#E58420] transition-all duration-200 hover:scale-110"
-            >
-              <FaFacebook size={24} />
-            </a>
-          )}
-        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

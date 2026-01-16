@@ -271,6 +271,20 @@
     animation: scroll-bounce 2s ease-in-out infinite;
   }
 
+  /* Horizontal scroll animation for carousel */
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-x {
+    animation: scroll-x 60s linear infinite;
+  }
+
   /* Text reveal animation */
   @keyframes text-reveal {
     0% {
