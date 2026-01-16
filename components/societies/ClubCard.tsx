@@ -1,5 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 type ClubCardProps = {
   title: string;
@@ -8,6 +12,7 @@ type ClubCardProps = {
   contactInfo: string;
   logoUrl: string;
   socialLinks: { label: string; href: string }[];
+  index?: number;
 };
 
 const ClubCard: React.FC<ClubCardProps> = ({
@@ -17,95 +22,116 @@ const ClubCard: React.FC<ClubCardProps> = ({
   contactInfo,
   logoUrl,
   socialLinks,
+  index = 0,
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Spotlight effect handler
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    cardRef.current.style.setProperty('--mouse-x', `${x}%`);
+    cardRef.current.style.setProperty('--mouse-y', `${y}%`);
+  };
+
   return (
-    <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 border border-gray-200 rounded-3xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-[1.02] max-w-md relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#E58420] to-[#323273] opacity-10 rounded-full -translate-y-10 translate-x-10"></div>
-      <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#262872] to-[#E58420] opacity-10 rounded-full translate-y-8 -translate-x-8"></div>
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: index * 0.05 }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ y: -5 }}
+      onMouseMove={handleMouseMove}
+      className="group glass-card rounded-2xl p-6 spotlight-card relative overflow-hidden max-w-md"
+    >
+      {/* Decorative gradient corners */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-fulvous/10 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:from-fulvous/20 transition-colors duration-500" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-full translate-y-12 -translate-x-12" />
       
       <div className="relative z-10">
         {/* Title */}
         <div className="text-center mb-6">
-          <h3 className="font-bold text-2xl text-[#060616] mb-2">
+          <h3 className="font-bold text-xl gradient-text mb-2">
             {title}
           </h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#E58420] to-[#323273] rounded-full mx-auto"></div>
+          <div className="w-12 h-0.5 bg-gradient-to-r from-fulvous to-fulvous-light rounded-full mx-auto" />
         </div>
         
         {/* Logo Section */}
         <div className="flex justify-center mb-6">
-          <div className="w-28 h-28 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300 hover:scale-105">
+          <motion.div 
+            className="w-24 h-24 glass rounded-2xl flex items-center justify-center group-hover:shadow-glow-fulvous-sm transition-all duration-500"
+            whileHover={{ scale: 1.05, rotate: 2 }}
+          >
             {logoUrl ? (
               <Image
                 src={logoUrl}
                 alt={`${title} Logo`}
-                width={90}
-                height={90}
+                width={80}
+                height={80}
                 className="rounded-xl object-cover"
               />
             ) : (
               <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#E58420] to-[#323273] rounded-full mx-auto mb-2"></div>
-                <span className="text-[#323273] text-xs font-medium">Logo</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-fulvous to-fulvous-light rounded-full mx-auto" />
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
         
         {/* About Section */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-200/30 rounded-2xl p-4 shadow-md mb-4 hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white/5 rounded-xl p-4 mb-4 border border-white/5 group-hover:border-white/10 transition-colors duration-300">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-[#E58420] rounded-full"></div>
-            <span className="text-sm font-semibold text-[#323273] uppercase tracking-wide">About</span>
+            <div className="w-1.5 h-1.5 bg-fulvous rounded-full" />
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">About</span>
           </div>
-          <p className="text-[#060616] text-sm leading-relaxed">{about}</p>
+          <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">{about}</p>
         </div>
 
         {/* Contact Section */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-200/30 rounded-2xl p-4 shadow-md mb-4 hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white/5 rounded-xl p-4 mb-4 border border-white/5 group-hover:border-white/10 transition-colors duration-300">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-[#262872] rounded-full"></div>
-            <span className="text-sm font-semibold text-[#323273] uppercase tracking-wide">Contact</span>
+            <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Contact</span>
           </div>
           <div className="space-y-1">
-            <p className="font-bold text-[#060616] text-sm">{holderName || "Not assigned"}</p>
-            <p className="text-[#323273] text-sm font-medium">{contactInfo}</p>
+            <p className="font-medium text-white text-sm">{holderName || "Not assigned"}</p>
+            <p className="text-gray-400 text-sm">{contactInfo}</p>
           </div>
         </div>
 
         {/* Social Links */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gray-200/30 rounded-2xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white/5 rounded-xl p-4 border border-white/5 group-hover:border-white/10 transition-colors duration-300">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-[#E58420] rounded-full"></div>
-            <span className="text-sm font-semibold text-[#323273] uppercase tracking-wide">Social Links</span>
-            <div className="w-2 h-2 bg-[#262872] rounded-full"></div>
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Connect</span>
           </div>
           
           <div className="flex flex-wrap gap-2 justify-center">
             {socialLinks.length > 0 ? (
-              socialLinks.map((link, index) => (
-                <a
-                  key={index}
+              socialLinks.map((link, idx) => (
+                <motion.a
+                  key={idx}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative px-3 py-2 bg-gradient-to-r from-[#E58420] to-[#323273] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:from-[#323273] hover:to-[#262872] text-xs"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-3 py-2 bg-gradient-to-r from-fulvous to-fulvous-light text-white font-medium rounded-lg text-xs flex items-center gap-1.5 shadow-glow-fulvous-sm hover:shadow-glow-fulvous transition-all duration-300"
                 >
-                  <span className="relative z-10">{link.label}</span>
-                  <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
+                  {link.label}
+                  <ExternalLink className="w-3 h-3" />
+                </motion.a>
               ))
             ) : (
-              <div className="text-center py-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-[#E58420]/30 to-[#323273]/30 rounded-full mx-auto mb-1"></div>
-                <span className="text-[#323273]/60 text-xs italic">No links available</span>
-              </div>
+              <p className="text-gray-500 text-xs italic">No links available</p>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { Users, Building, Trophy, Target } from 'lucide-react';
 
 interface StatCardProps {
@@ -9,33 +9,122 @@ interface StatCardProps {
   title: string;
   count: number;
   description: string;
-  color: string;
+  gradientFrom: string;
+  gradientTo: string;
   delay: number;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ icon, title, count, description, color, delay }) => {
+// Animated counter component
+const AnimatedCounter: React.FC<{ value: number }> = ({ value }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 50,
+    stiffness: 100,
+  });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [isInView, value, motionValue]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest) => {
+      setDisplayValue(Math.round(latest));
+    });
+    return unsubscribe;
+  }, [springValue]);
+
+  return <span ref={ref}>{displayValue}</span>;
+};
+
+const StatCard: React.FC<StatCardProps> = ({ 
+  icon, 
+  title, 
+  count, 
+  description, 
+  gradientFrom, 
+  gradientTo, 
+  delay 
+}) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-      className={`bg-gray-800 rounded-lg p-6 text-white shadow-lg hover:shadow-xl transition-shadow border border-gray-700`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      whileHover={{ y: -5, transition: { duration: 0.3 } }}
+      className="group relative glass-card rounded-2xl p-6 text-white overflow-hidden"
     >
-      <div className="flex items-center justify-between mb-4">
-        <div className={`p-3 rounded-lg ${color}`}>
-          {icon}
+      {/* Gradient border effect on hover */}
+      <div 
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `linear-gradient(135deg, ${gradientFrom}20, transparent 50%, ${gradientTo}20)`,
+        }}
+      />
+      
+      {/* Glow effect */}
+      <div 
+        className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-3xl"
+        style={{ background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})` }}
+      />
+
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          {/* Icon with gradient background */}
+          <motion.div 
+            className="p-3 rounded-xl relative overflow-hidden"
+            style={{
+              background: `linear-gradient(135deg, ${gradientFrom}20, ${gradientTo}10)`,
+            }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                background: `linear-gradient(135deg, ${gradientFrom}40, ${gradientTo}30)`,
+              }}
+            />
+            <div className="relative" style={{ color: gradientFrom }}>
+              {icon}
+            </div>
+          </motion.div>
+          
+          {/* Animated count */}
+          <div className="text-right">
+            <motion.span
+              className="text-4xl font-bold bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
+              }}
+            >
+              <AnimatedCounter value={count} />
+            </motion.span>
+          </div>
         </div>
-        <motion.span
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: delay + 0.2 }}
-          className="text-3xl font-bold"
-        >
-          {count}
-        </motion.span>
+        
+        <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-white/90 transition-colors">
+          {title}
+        </h3>
+        <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
       </div>
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-sm text-gray-400">{description}</p>
+
+      {/* Bottom accent line */}
+      <motion.div 
+        className="absolute bottom-0 left-0 h-1 rounded-b-2xl"
+        style={{
+          background: `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`,
+        }}
+        initial={{ width: "0%" }}
+        whileInView={{ width: "100%" }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: delay + 0.3 }}
+      />
     </motion.div>
   );
 };
@@ -55,7 +144,8 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Main Councils",
       count: data.mainBodies.length,
       description: "Core governing bodies of the student senate",
-      color: "bg-blue-500/20 text-blue-300",
+      gradientFrom: "#3b82f6",
+      gradientTo: "#60a5fa",
       delay: 0,
     },
     {
@@ -63,7 +153,8 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Boards",
       count: data.boards.length,
       description: "Specialized administrative boards",
-      color: "bg-green-500/20 text-green-300",
+      gradientFrom: "#10b981",
+      gradientTo: "#34d399",
       delay: 0.1,
     },
     {
@@ -71,7 +162,8 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Clubs & Committees",
       count: data.clubs.length,
       description: "Active student organizations and committees",
-      color: "bg-purple-500/20 text-purple-300",
+      gradientFrom: "#8b5cf6",
+      gradientTo: "#a78bfa",
       delay: 0.2,
     },
     {
@@ -79,7 +171,8 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       title: "Total Positions",
       count: data.mainBodies.length + data.boards.length + data.clubs.length,
       description: "Leadership positions across all levels",
-      color: "bg-orange-500/20 text-orange-300",
+      gradientFrom: "#e58420",
+      gradientTo: "#f59e3d",
       delay: 0.3,
     },
   ];

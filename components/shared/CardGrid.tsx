@@ -2,22 +2,37 @@
 
 import React from 'react';
 import InfoCard from './InfoCard';
+import { motion } from 'framer-motion';
 
 interface CardGridProps {
   cols: number;
-  title: string;
   items: { title: string; imageurl: string}[];
 }
 
-const CardGrid: React.FC<CardGridProps> = ({ cols, title, items }) => (
-  <section className="w-full max-w-7xl mx-auto py-16 px-4">
-    <h2 className="text-3xl font-bold mb-10 text-center text-fulvous">{title}</h2>
-    <div className={`grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${cols}`}>
+const CardGrid: React.FC<CardGridProps> = ({ cols, items }) => {
+  // Create responsive grid classes based on cols
+  const getGridCols = () => {
+    switch(cols) {
+      case 2: return 'sm:grid-cols-2';
+      case 3: return 'sm:grid-cols-2 lg:grid-cols-3';
+      case 4: return 'sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+      default: return 'sm:grid-cols-2 lg:grid-cols-3';
+    }
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className={`grid gap-6 md:gap-8 ${getGridCols()}`}
+    >
       {items.map((item, i) => (
-        <InfoCard key={i} title={item.title} imageurl={item.imageurl}/>
+        <InfoCard key={i} title={item.title} imageurl={item.imageurl} index={i} />
       ))}
-    </div>
-  </section>
-);
+    </motion.div>
+  );
+};
 
 export default CardGrid;

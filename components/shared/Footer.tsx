@@ -64,6 +64,7 @@ interface SocialIconProps {
   href: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SocialIcon: React.FC<SocialIconProps> = ({ children, href }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
     {children}
@@ -202,107 +203,151 @@ const Footer: React.FC = () => {
 
 
   return (
-    <footer className="w-full bg-gray-900 text-gray-100 pt-12 pb-6 px-4 md:px-8 lg:px-12 font-sans">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
+    <footer className="w-full bg-navy text-gray-100 pt-16 pb-8 px-4 md:px-8 lg:px-16 font-sans relative overflow-hidden">
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-fulvous/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 relative z-10">
 
         {/* Column 1: Logo and Contact Info */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <Image
-            src="/images/IITJ/logo/iitjlogo.png"
-            alt="IIT Jodhpur Logo"
-            width={100}
-            height={100}
-            className="mb-4 rounded-full"
-          />
-          <p className="text-lg font-semibold text-gray-50 mb-1">Student Senate, IITJ</p>
-          <p className="text-sm text-gray-300 mb-4">
+          <div className="relative group mb-6">
+            <div className="absolute inset-0 bg-gradient-to-br from-fulvous/20 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <Image
+              src="/images/IITJ/logo/iitjlogo.png"
+              alt="IIT Jodhpur Logo"
+              width={100}
+              height={100}
+              className="rounded-full ring-2 ring-white/10 group-hover:ring-fulvous/30 transition-all duration-300"
+            />
+          </div>
+          <p className="text-xl font-bold gradient-text mb-1">Student Senate, IITJ</p>
+          <p className="text-sm text-gray-400 mb-6">
             छात्र सीनेट, आईआईटीजे
           </p>
-          <div className="flex flex-col items-center md:items-start text-sm text-gray-300">
-            <a href="mailto:gensecy_ss@iitj.ac.in" className="flex items-center hover:text-white transition mb-1">
-              <Mail className="h-4 w-4 mr-2" />
+          <div className="flex flex-col items-center md:items-start text-sm text-gray-400 space-y-2">
+            <a href="mailto:gensecy_ss@iitj.ac.in" className="flex items-center hover:text-fulvous transition-colors duration-200 group">
+              <Mail className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
               gensecy_ss@iitj.ac.in
             </a>
-            <a href="mailto:gensecy_acac@iitj.ac.in" className="flex items-center hover:text-white transition mb-1">
-              <Mail className="h-4 w-4 mr-2" />
+            <a href="mailto:gensecy_acac@iitj.ac.in" className="flex items-center hover:text-fulvous transition-colors duration-200 group">
+              <Mail className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
               gensecy_acac@iitj.ac.in
             </a>
-            <a href="mailto:gensecy_sac@iitj.ac.in" className="flex items-center hover:text-white transition mb-1">
-              <Mail className="h-4 w-4 mr-2" />
+            <a href="mailto:gensecy_sac@iitj.ac.in" className="flex items-center hover:text-fulvous transition-colors duration-200 group">
+              <Mail className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
               gensecy_sac@iitj.ac.in
             </a>
           </div>
-          <div className="flex gap-4 mt-6">
-            <SocialIcon href="https://www.linkedin.com/school/iit-jodhpur/"><Linkedin size={24} /></SocialIcon>
-            <SocialIcon href="https://www.instagram.com/iitj_official"><Instagram size={24} /></SocialIcon>
-            <SocialIcon href="mailto:gensecy_ss@iitj.ac.in"><Mail size={24} /></SocialIcon>
+          <div className="flex gap-4 mt-8">
+            <a 
+              href="https://www.linkedin.com/school/iit-jodhpur/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-fulvous hover:border-fulvous/30 hover:bg-fulvous/5 transition-all duration-300"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a 
+              href="https://www.instagram.com/iitj_official" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-fulvous hover:border-fulvous/30 hover:bg-fulvous/5 transition-all duration-300"
+            >
+              <Instagram size={20} />
+            </a>
+            <a 
+              href="mailto:gensecy_ss@iitj.ac.in" 
+              className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-fulvous hover:border-fulvous/30 hover:bg-fulvous/5 transition-all duration-300"
+            >
+              <Mail size={20} />
+            </a>
           </div>
         </div>
 
         {/* Column 2: Quick Links */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h3 className="text-xl font-bold mb-4 border-b-2 border-fulvous pb-1">Quick Links</h3>
-          <ul className="space-y-2 text-gray-300 text-base">
-            <li><a href="/visit-iitj" className="hover:text-white transition">Visit IITJ</a></li>
-            <li><a href="/societies" className="hover:text-white transition">Student Bodies</a></li>
-            {/* <li><a href="/senate" className="hover:text-white transition">Meet the Senate</a></li> */}
-            <li><a href="https://iitj.ac.in/PageImages/Gallery/07-2025/Academic-Calendar-AY-202526SemI2-with-CCCD-events-638871414539740843.pdf" className="hover:text-white transition" target="_blank" rel="noopener noreferrer">Activity Calendar</a></li>
-            <li><a href="/pdfs/constitution.pdf" className="hover:text-white transition" target="_blank" rel="noopener noreferrer">Constitution</a></li>
-            <li><a href="mailto:student_grievance@iitj.ac.in" className="hover:text-white transition">Student Grievances</a></li>
+          <h3 className="text-lg font-bold mb-6 gradient-text">Quick Links</h3>
+          <ul className="space-y-3 text-gray-400 text-sm">
+            <li><a href="/visit-iitj" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Visit IITJ</a></li>
+            <li><a href="/societies" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Student Bodies</a></li>
+            <li><a href="https://iitj.ac.in/PageImages/Gallery/07-2025/Academic-Calendar-AY-202526SemI2-with-CCCD-events-638871414539740843.pdf" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group" target="_blank" rel="noopener noreferrer"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Activity Calendar</a></li>
+            <li><a href="/pdfs/constitution.pdf" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group" target="_blank" rel="noopener noreferrer"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Constitution</a></li>
+            <li><a href="mailto:student_grievance@iitj.ac.in" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Student Grievances</a></li>
           </ul>
         </div>
 
         {/* Column 3: Explore */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h3 className="text-xl font-bold mb-4 border-b-2 border-fulvous pb-1">Explore</h3>
-          <ul className="space-y-2 text-gray-300 text-base">
-            <li><a href="#" className="hover:text-white transition">Rules</a></li>
-            <li><a href="#" className="hover:text-white transition">Campus Life</a></li>
-            <li><a href="#" className="hover:text-white transition">Campus Gallery</a></li>
-            <li><a href="#" onClick={handleAboutUsClick} className="hover:text-white transition">About Us</a></li>
-            <li><a href="#" className="hover:text-white transition">Contact Us</a></li>
+          <h3 className="text-lg font-bold mb-6 gradient-text">Explore</h3>
+          <ul className="space-y-3 text-gray-400 text-sm">
+            <li><a href="#" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Rules</a></li>
+            <li><a href="#" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Campus Life</a></li>
+            <li><a href="#" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Campus Gallery</a></li>
+            <li><a href="#" onClick={handleAboutUsClick} className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />About Us</a></li>
+            <li><a href="#" className="hover:text-fulvous transition-colors duration-200 flex items-center gap-2 group"><span className="w-1.5 h-1.5 rounded-full bg-fulvous/50 group-hover:bg-fulvous transition-colors" />Contact Us</a></li>
           </ul>
         </div>
 
-        {/* Column 4: Weather/Location */}
+        {/* Column 4: Weather/Location - Glass morphism widget */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h3 className="text-xl font-bold mb-4 border-b-2 border-fulvous pb-1">Jodhpur Weather</h3>
+          <h3 className="text-lg font-bold mb-6 gradient-text">Jodhpur Weather</h3>
           {weatherData ? (
-            <div className="space-y-2">
-              <p className="text-sm text-gray-300">{weatherData.time}, {weatherData.date}</p>
-              <div className="flex items-center text-lg font-semibold text-white">
-                <span className="text-3xl mr-2">{weatherData.icon}</span>
-                {weatherData.description}
+            <div className="glass-card rounded-2xl p-5 w-full">
+              <p className="text-xs text-gray-400 mb-3">{weatherData.time}, {weatherData.date}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">{weatherData.icon}</span>
+                <div>
+                  <p className="text-3xl font-bold gradient-text">{weatherData.temp}</p>
+                  <p className="text-sm text-gray-300">{weatherData.description}</p>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-yellow-300">{weatherData.temp}</p>
-              <div className="text-sm text-gray-300 grid grid-cols-2 gap-y-1 mt-2">
-                <span>Humidity: {weatherData.humidity}</span>
-                <span>Wind: {weatherData.wind}</span>
-                <span className="col-span-2 mt-2 px-3 py-1 rounded-md bg-gray-700 text-white text-base flex items-center justify-between">
-                  <span>Air Pollution (PM2.5): {weatherData.pm2_5_value !== null ? weatherData.pm2_5_value.toFixed(2) : 'N/A'}</span>
-                  <span className={weatherData.aqi_color_class}>
-                    {weatherData.aqi_heart_color && <BeatingHeart color={weatherData.aqi_heart_color} />}
-                  </span>
+              <div className="grid grid-cols-2 gap-3 text-sm text-gray-400">
+                <div className="bg-white/5 rounded-lg px-3 py-2">
+                  <span className="text-xs text-gray-500">Humidity</span>
+                  <p className="text-white font-medium">{weatherData.humidity}</p>
+                </div>
+                <div className="bg-white/5 rounded-lg px-3 py-2">
+                  <span className="text-xs text-gray-500">Wind</span>
+                  <p className="text-white font-medium">{weatherData.wind}</p>
+                </div>
+              </div>
+              <div className="mt-4 bg-white/5 rounded-lg px-3 py-2 flex items-center justify-between">
+                <div>
+                  <span className="text-xs text-gray-500">Air Quality (PM2.5)</span>
+                  <p className="text-white font-medium">{weatherData.pm2_5_value !== null ? weatherData.pm2_5_value.toFixed(1) : 'N/A'}</p>
+                </div>
+                <span className={`${weatherData.aqi_color_class} flex items-center gap-1 text-sm font-medium`}>
+                  {weatherData.aqi_status}
+                  {weatherData.aqi_heart_color && <BeatingHeart color={weatherData.aqi_heart_color} />}
                 </span>
               </div>
-              <p className="text-xs text-gray-400 mt-2">Source: Open-Meteo & Open-Meteo Air Quality</p>
+              <p className="text-[10px] text-gray-500 mt-3 text-center">Source: Open-Meteo</p>
             </div>
           ) : (
-            <p className="text-gray-400 italic">Loading weather data...</p>
+            <div className="glass-card rounded-2xl p-5 w-full animate-pulse">
+              <div className="h-4 bg-white/10 rounded mb-3 w-2/3" />
+              <div className="h-12 bg-white/10 rounded mb-4" />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="h-12 bg-white/10 rounded" />
+                <div className="h-12 bg-white/10 rounded" />
+              </div>
+            </div>
           )}
         </div>
 
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="border-t border-gray-700 mt-10 pt-4 text-center text-xs text-gray-400">
-        <div className="flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-4">
-          <p className="mb-2 sm:mb-0">
+      <div className="border-t border-white/5 mt-12 pt-6 text-center text-xs text-gray-500 relative z-10">
+        <div className="flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-4 gap-4">
+          <p>
             &copy; Student Senate {new Date().getFullYear()}, IIT Jodhpur. All rights reserved.
           </p>
-          <div className="flex items-center">
-            <p className="mr-4">Developed & Maintained by Student Senate | IIT Jodhpur</p>
-          </div>
+          <p className="text-gray-600">
+            Developed & Maintained by <span className="text-gray-400">Student Senate</span> | IIT Jodhpur
+          </p>
         </div>
       </div>
       <AboutUsPopup
