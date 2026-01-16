@@ -29,8 +29,8 @@ interface Club {
 
 // Section component for consistent styling
 const Section: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
-  <section id={id} className="mb-16 scroll-mt-20">
-    <h2 className="text-3xl font-bold text-fulvous mb-8 text-center">{title}</h2>
+  <section id={id} className="mb-10 sm:mb-12 md:mb-16 scroll-mt-16 sm:scroll-mt-20">
+    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-fulvous mb-4 sm:mb-6 md:mb-8 text-center">{title}</h2>
     {children}
   </section>
 );
@@ -79,11 +79,11 @@ const SenatePage = () => {
     return (
       <Section id={sectionId} title={sectionTitle}>
         {clubs.map((club) => (
-          <div key={club.clubName} id={generateClubId(club.clubName)} className="mb-12 scroll-mt-20">
-            <h3 className="text-2xl font-semibold text-gray-300 mb-6 text-center">
+          <div key={club.clubName} id={generateClubId(club.clubName)} className="mb-8 sm:mb-10 md:mb-12 scroll-mt-16 sm:scroll-mt-20">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-4 sm:mb-5 md:mb-6 text-center">
               {club.clubName}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {club.members.map((person) => (
                 <PersonCard key={person.id} person={person} />
               ))}
@@ -125,7 +125,7 @@ const SenatePage = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-black pt-32 pb-20 overflow-hidden">
+      <div className="relative bg-black pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 overflow-hidden">
         <div
             className="absolute inset-0 w-full h-full opacity-20"
             style={{
@@ -133,25 +133,25 @@ const SenatePage = () => {
                 backgroundSize: '40px 40px',
             }}
          ></div>
-         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-fulvous/10 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight">
+         <div className="absolute top-1/2 left-1/2 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-fulvous/10 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight">
             MEET THE SENATE
           </h1>
-          <p className="text-sm text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-400">
             STUDENT SENATE TEAM MEMBERS<span className="text-white font-medium"></span>
           </p>
-          <div className="mt-8 max-w-lg mx-auto">
+          <div className="mt-6 sm:mt-8 max-w-md sm:max-w-lg mx-auto px-2">
             <div className="relative">
               <input
                 type="text"
                 placeholder="Search for a member...."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-gray-800/50 border-2 border-gray-700 rounded-full py-3 pl-12 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fulvous focus:border-transparent transition-all"
+                className="w-full bg-gray-800/50 border-2 border-gray-700 rounded-full py-2.5 sm:py-3 pl-10 sm:pl-12 pr-4 text-sm sm:text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fulvous focus:border-transparent transition-all"
               />
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-                <Search className="w-5 h-5 text-gray-400" />
+              <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@ const SenatePage = () => {
         ) : (
           <>
             <Section id="gen-secs" title="General Secretaries">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {genSecs.map((person) => (
                   <PersonCard key={person.id} person={person} />
                 ))}
@@ -184,7 +184,7 @@ const SenatePage = () => {
             </Section>
 
             <Section id="vps" title="Vice Presidents">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                 {vps.map((person) => (
                   <PersonCard key={person.id} person={person} />
                 ))}

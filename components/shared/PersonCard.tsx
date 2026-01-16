@@ -64,22 +64,22 @@ const PersonCard: React.FC<{ person: Person; index?: number }> = ({ person, inde
         
         {/* Hover overlay for social media links */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/50 flex justify-center items-end pb-8"
+          className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/50 flex justify-center items-end pb-6 sm:pb-8"
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex gap-4">
+          <div className="flex gap-2 sm:gap-3 md:gap-4">
             {person.links.linkedin && (
               <motion.a 
                 href={person.links.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-3 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-fulvous hover:border-fulvous transition-all duration-300"
+                className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-white hover:bg-fulvous hover:border-fulvous transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Linkedin size={20} />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.a>
             )}
             {person.links.instagram && (
@@ -87,21 +87,21 @@ const PersonCard: React.FC<{ person: Person; index?: number }> = ({ person, inde
                 href={person.links.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-3 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:border-transparent transition-all duration-300"
+                className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:border-transparent transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Instagram size={20} /> 
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5" /> 
               </motion.a>
             )}
             {person.email && (
               <motion.a 
                 href={`mailto:${person.email}`} 
-                className="p-3 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300"
+                className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-white hover:bg-blue-500 hover:border-blue-500 transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail size={20} />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.a>
             )}
           </div>
@@ -109,18 +109,18 @@ const PersonCard: React.FC<{ person: Person; index?: number }> = ({ person, inde
       </div>
       
       {/* Member's details */}
-      <div className="p-5 text-center bg-surface-2 flex-grow flex flex-col justify-center relative">
+      <div className="p-3 sm:p-4 md:p-5 text-center bg-surface-2 flex-grow flex flex-col justify-center relative">
         {/* Decorative line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-fulvous to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 sm:w-10 md:w-12 h-0.5 bg-gradient-to-r from-transparent via-fulvous to-transparent" />
         
         <motion.h3 
-          className="text-lg font-semibold text-white group-hover:gradient-text transition-all duration-300"
+          className="text-base sm:text-lg font-semibold text-white group-hover:gradient-text transition-all duration-300"
         >
           {person.name}
         </motion.h3>
-        <div className="mt-2 space-y-1">
+        <div className="mt-1.5 sm:mt-2 space-y-0.5 sm:space-y-1">
           {person.pors.map((por, idx) => (
-            <p key={idx} className="text-sm text-gray-400 leading-tight">{por}</p>
+            <p key={idx} className="text-xs sm:text-sm text-gray-400 leading-tight">{por}</p>
           ))}
         </div>
       </div>

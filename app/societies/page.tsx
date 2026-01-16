@@ -148,7 +148,7 @@ const HeroSection = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6"
                 >
                     <span className="text-white">Student Body</span>
                     <br />
@@ -160,7 +160,7 @@ const HeroSection = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2"
                 >
                     Discover the vibrant ecosystem of student organizations at IIT Jodhpur. 
                     Explore councils, boards, clubs, and committees that shape campus life.
@@ -171,7 +171,7 @@ const HeroSection = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.3 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
+                    className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto px-2"
                 >
                     {statsData.map((stat, index) => (
                         <motion.div
@@ -180,15 +180,15 @@ const HeroSection = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                            className="glass-card rounded-2xl p-6 text-center group cursor-default"
+                            className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center group cursor-default"
                         >
-                            <div className={`w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                                <stat.icon className="w-6 h-6 text-white" />
+                            <div className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                                <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
+                            <div className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-0.5 sm:mb-1`}>
                                 <AnimatedCounter value={stat.count} delay={index * 100} />+
                             </div>
-                            <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                            <div className="text-xs sm:text-sm text-gray-400 font-medium">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -226,18 +226,18 @@ const SectionHeader: React.FC<{
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-12"
+        className="text-center mb-8 sm:mb-12 px-2"
     >
         <motion.div 
-            className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${gradient} mb-6`}
+            className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${gradient} mb-4 sm:mb-6`}
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <Icon className="w-8 h-8 text-white" />
+            <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
         </motion.div>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h2>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">{subtitle}</p>
-        <div className={`w-24 h-1 bg-gradient-to-r ${gradient} rounded-full mx-auto mt-6`} />
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">{title}</h2>
+        <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">{subtitle}</p>
+        <div className={`w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r ${gradient} rounded-full mx-auto mt-4 sm:mt-6`} />
     </motion.div>
 )
 
@@ -439,64 +439,69 @@ const SearchFilterBar: React.FC<{
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-2xl p-4 mb-12 sticky top-20 z-40"
+            className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-8 sm:mb-12 sticky top-16 sm:top-20 z-40"
         >
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                {/* Search */}
-                <div className="relative flex-1 max-w-md w-full">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <div className="flex flex-col gap-3 sm:gap-4">
+                {/* Search - Full width on all screens */}
+                <div className="relative w-full">
+                    <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                     <input
                         type="text"
                         placeholder="Search organizations..."
                         value={searchQuery}
                         onChange={(e) => onSearchChange(e.target.value)}
-                        className="w-full pl-12 pr-10 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-fulvous/50 focus:ring-2 focus:ring-fulvous/20 transition-all"
+                        className="w-full pl-10 sm:pl-12 pr-10 py-2.5 sm:py-3 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl text-sm sm:text-base text-white placeholder-gray-500 focus:outline-none focus:border-fulvous/50 focus:ring-2 focus:ring-fulvous/20 transition-all"
                     />
                     {searchQuery && (
                         <button
                             onClick={() => onSearchChange('')}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                         >
-                            <X className="w-5 h-5" />
+                            <X className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                     )}
                 </div>
 
-                {/* Filters */}
-                <div className="flex items-center gap-2 flex-wrap justify-center">
-                    {filters.map((filter) => (
+                {/* Filters and View Toggle Row */}
+                <div className="flex items-center justify-between gap-2 sm:gap-4">
+                    {/* Filters - Horizontally scrollable on mobile */}
+                    <div className="flex-1 overflow-x-auto scrollbar-hide">
+                        <div className="flex items-center gap-1.5 sm:gap-2 min-w-max">
+                            {filters.map((filter) => (
+                                <button
+                                    key={filter}
+                                    onClick={() => onFilterChange(filter)}
+                                    className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                                        activeFilter === filter
+                                            ? 'bg-gradient-to-r from-fulvous to-fulvous-light text-white shadow-glow-fulvous-sm'
+                                            : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                                    }`}
+                                >
+                                    {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* View Mode Toggle */}
+                    <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1 flex-shrink-0">
                         <button
-                            key={filter}
-                            onClick={() => onFilterChange(filter)}
-                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                                activeFilter === filter
-                                    ? 'bg-gradient-to-r from-fulvous to-fulvous-light text-white shadow-glow-fulvous-sm'
-                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                            onClick={() => onViewModeChange('grid')}
+                            className={`p-1.5 sm:p-2 rounded-md sm:rounded-lg transition-all ${
+                                viewMode === 'grid' ? 'bg-fulvous text-white' : 'text-gray-400 hover:text-white'
                             }`}
                         >
-                            {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                            <Grid3X3 className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
-                    ))}
-                </div>
-
-                {/* View Mode Toggle */}
-                <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
-                    <button
-                        onClick={() => onViewModeChange('grid')}
-                        className={`p-2 rounded-lg transition-all ${
-                            viewMode === 'grid' ? 'bg-fulvous text-white' : 'text-gray-400 hover:text-white'
-                        }`}
-                    >
-                        <Grid3X3 className="w-5 h-5" />
-                    </button>
-                    <button
-                        onClick={() => onViewModeChange('list')}
-                        className={`p-2 rounded-lg transition-all ${
-                            viewMode === 'list' ? 'bg-fulvous text-white' : 'text-gray-400 hover:text-white'
-                        }`}
-                    >
-                        <LayoutList className="w-5 h-5" />
-                    </button>
+                        <button
+                            onClick={() => onViewModeChange('list')}
+                            className={`p-1.5 sm:p-2 rounded-md sm:rounded-lg transition-all ${
+                                viewMode === 'list' ? 'bg-fulvous text-white' : 'text-gray-400 hover:text-white'
+                            }`}
+                        >
+                            <LayoutList className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </motion.div>

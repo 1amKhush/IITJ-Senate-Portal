@@ -82,29 +82,29 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center">
+      <div className="relative z-10 flex h-full items-center justify-center px-4 sm:px-6">
         <motion.div
           style={{ y: textY, opacity }}
-          className="p-8 rounded-md text-center max-w-5xl mx-auto"
+          className="p-4 sm:p-6 md:p-8 rounded-md text-center max-w-5xl mx-auto"
         >
           {/* Text reveal animation */}
-          <div className="overflow-hidden mb-6">
+          <div className="overflow-hidden mb-4 sm:mb-6">
             <motion.p
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 tracking-widest uppercase font-medium"
+              className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-300 tracking-widest uppercase font-medium"
             >
               {words[0]}
             </motion.p>
           </div>
           
-          <div className="overflow-hidden mb-8">
+          <div className="overflow-hidden mb-6 sm:mb-8">
             <motion.h1
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight"
             >
               <span className="gradient-text">{words[1]}</span>
             </motion.h1>
@@ -114,7 +114,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-200/90 mx-auto max-w-3xl mb-10 px-4 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200/90 mx-auto max-w-3xl mb-8 sm:mb-10 px-2 sm:px-4 leading-relaxed"
           >
             Your official portal for all student activities, councils, and events at IIT Jodhpur.
           </motion.p>
@@ -123,14 +123,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-            className="flex items-center justify-center gap-6 flex-wrap"
+            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 flex-wrap"
           >
             <MagneticButton strength={0.4}>
               <Link href="/events">
                 <Button 
                   size="xl" 
                   variant="gradient"
-                  className="cursor-pointer"
+                  className="cursor-pointer text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
                 >
                   Explore Events
                 </Button>
@@ -141,7 +141,7 @@ export default function Hero() {
                 <Button 
                   size="xl" 
                   variant="glass" 
-                  className="cursor-pointer"
+                  className="cursor-pointer text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
                 >
                   About the Senate
                 </Button>

@@ -131,18 +131,18 @@ const HeroSection = () => {
                     </motion.div>
 
                     {/* Title */}
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-4 sm:mb-6">
                         <span className="text-white drop-shadow-2xl">EVENTS</span>
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+                    <p className="text-base sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">
                         Experience the vibrant tapestry of festivals, competitions, and celebrations
                         that define campus life at IIT Jodhpur
                     </p>
 
                     {/* Stats */}
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
                         {[
                             { value: '12+', label: 'Annual Events' },
                             { value: '50K+', label: 'Participants' },
@@ -153,10 +153,10 @@ const HeroSection = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.8 + i * 0.1 }}
-                                className="text-center"
+                                className="text-center min-w-[80px]"
                             >
-                                <div className="text-3xl md:text-4xl font-bold gradient-text">{stat.value}</div>
-                                <div className="text-sm text-gray-400">{stat.label}</div>
+                                <div className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">{stat.value}</div>
+                                <div className="text-xs sm:text-sm text-gray-400">{stat.label}</div>
                             </motion.div>
                         ))}
                     </div>
@@ -227,7 +227,7 @@ const PremiumFestCard: React.FC<{ fest: typeof fests[0]; index: number }> = ({ f
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="group relative rounded-3xl overflow-hidden spotlight-card h-[500px]"
+            className="group relative rounded-2xl sm:rounded-3xl overflow-hidden spotlight-card h-[420px] sm:h-[480px] md:h-[500px]"
         >
             {/* Background Image with Parallax */}
             <motion.div
@@ -252,33 +252,33 @@ const PremiumFestCard: React.FC<{ fest: typeof fests[0]; index: number }> = ({ f
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="absolute top-6 left-6 z-20"
+                className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20"
             >
-                <div className={`flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r ${categoryData.color} backdrop-blur-sm`}>
-                    <CategoryIcon className="w-4 h-4 text-white" />
-                    <span className="text-xs font-semibold text-white uppercase tracking-wider">
+                <div className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${categoryData.color} backdrop-blur-sm`}>
+                    <CategoryIcon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                    <span className="text-[10px] sm:text-xs font-semibold text-white uppercase tracking-wider">
                         {categoryData.label}
                     </span>
                 </div>
             </motion.div>
 
             {/* Date Badge */}
-            <div className="absolute top-6 right-6 z-20">
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
                 <motion.div 
-                    className="glass rounded-2xl p-4 text-center min-w-[80px]"
+                    className="glass rounded-xl sm:rounded-2xl p-2.5 sm:p-4 text-center min-w-[60px] sm:min-w-[80px]"
                     whileHover={{ scale: 1.05 }}
                 >
-                    <div className="text-3xl font-bold gradient-text leading-none">{day}</div>
-                    <div className="text-sm font-medium text-gray-300 uppercase tracking-wider">{month}</div>
-                    {year && <div className="text-xs text-gray-500">{year}</div>}
+                    <div className="text-2xl sm:text-3xl font-bold gradient-text leading-none">{day}</div>
+                    <div className="text-xs sm:text-sm font-medium text-gray-300 uppercase tracking-wider">{month}</div>
+                    {year && <div className="text-[10px] sm:text-xs text-gray-500">{year}</div>}
                 </motion.div>
             </div>
 
             {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 z-10">
                 {/* Title */}
                 <motion.h3
-                    className="text-3xl md:text-4xl font-bold text-white mb-3 group-hover:text-fulvous transition-colors duration-300"
+                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 group-hover:text-fulvous transition-colors duration-300"
                     animate={{ x: isHovered ? 10 : 0 }}
                     transition={{ duration: 0.3 }}
                 >
@@ -286,20 +286,20 @@ const PremiumFestCard: React.FC<{ fest: typeof fests[0]; index: number }> = ({ f
                 </motion.h3>
 
                 {/* Description */}
-                <p className="text-gray-300 text-sm leading-relaxed mb-6 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-2 group-hover:line-clamp-3 transition-all duration-300">
                     {fest.description}
                 </p>
 
                 {/* Meta Info */}
-                <div className="flex flex-wrap items-center gap-4 mb-6">
-                    <div className="flex items-center gap-2 text-gray-400 text-sm">
-                        <Calendar className="w-4 h-4 text-fulvous" />
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-gray-400 text-xs sm:text-sm">
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-fulvous" />
                         <span>{fest.date}</span>
                     </div>
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                     {fest.website && (
                         <motion.a
                             href={fest.website}
@@ -307,10 +307,10 @@ const PremiumFestCard: React.FC<{ fest: typeof fests[0]; index: number }> = ({ f
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-6 py-3 bg-gradient-to-r from-fulvous to-fulvous-light text-white font-semibold rounded-xl flex items-center gap-2 shadow-glow-fulvous-sm hover:shadow-glow-fulvous transition-all duration-300"
+                            className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-fulvous to-fulvous-light text-white text-sm sm:text-base font-semibold rounded-lg sm:rounded-xl flex items-center gap-1.5 sm:gap-2 shadow-glow-fulvous-sm hover:shadow-glow-fulvous transition-all duration-300"
                         >
-                            Visit Website
-                            <ExternalLink className="w-4 h-4" />
+                            <span className="hidden xs:inline">Visit</span> Website
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                         </motion.a>
                     )}
                     
@@ -319,7 +319,7 @@ const PremiumFestCard: React.FC<{ fest: typeof fests[0]; index: number }> = ({ f
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-3 glass border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300"
+                                className="px-4 py-2 sm:px-6 sm:py-3 glass border border-white/10 text-white text-sm sm:text-base font-medium rounded-lg sm:rounded-xl hover:bg-white/10 transition-all duration-300"
                             >
                                 Learn More
                             </motion.button>
@@ -407,7 +407,7 @@ const FeaturedEvent = () => {
                     <span className="text-fulvous font-semibold text-lg">Featured Event</span>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -415,17 +415,17 @@ const FeaturedEvent = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
                             {featuredFest.title}
                         </h2>
-                        <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                        <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-6 sm:mb-8">
                             {featuredFest.description}
                         </p>
                         
-                        <div className="flex flex-wrap gap-6 mb-8">
-                            <div className="flex items-center gap-3 text-gray-400">
-                                <Calendar className="w-5 h-5 text-fulvous" />
-                                <span className="text-lg">{featuredFest.date}</span>
+                        <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8">
+                            <div className="flex items-center gap-2 sm:gap-3 text-gray-400">
+                                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-fulvous" />
+                                <span className="text-base sm:text-lg">{featuredFest.date}</span>
                             </div>
                         </div>
 
@@ -436,10 +436,10 @@ const FeaturedEvent = () => {
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-fulvous to-fulvous-light text-white font-bold text-lg rounded-2xl shadow-glow-fulvous hover:shadow-glow-fulvous transition-all duration-300"
+                                className="inline-flex items-center gap-2 sm:gap-3 px-5 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-fulvous to-fulvous-light text-white font-bold text-base sm:text-lg rounded-xl sm:rounded-2xl shadow-glow-fulvous hover:shadow-glow-fulvous transition-all duration-300"
                             >
-                                Explore {featuredFest.title}
-                                <ExternalLink className="w-5 h-5" />
+                                <span className="hidden sm:inline">Explore</span> {featuredFest.title}
+                                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
                             </motion.a>
                         )}
                     </motion.div>
@@ -490,30 +490,32 @@ const FilterBar: React.FC<{
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-2xl p-4 mb-12 sticky top-20 z-40"
+            className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-8 sm:mb-12 sticky top-16 sm:top-20 z-40"
         >
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                {/* Category Filters */}
-                <div className="flex items-center gap-2 flex-wrap justify-center">
-                    {filters.map((filter) => {
-                        const category = eventCategories[filter as keyof typeof eventCategories]
-                        const Icon = category?.icon || Filter
-                        
-                        return (
-                            <button
-                                key={filter}
-                                onClick={() => onFilterChange(filter)}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                                    activeFilter === filter
-                                        ? `bg-gradient-to-r ${category?.color || 'from-fulvous to-fulvous-light'} text-white shadow-lg`
-                                        : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-                                }`}
-                            >
-                                <Icon className="w-4 h-4" />
-                                {filter.charAt(0).toUpperCase() + filter.slice(1)}
-                            </button>
-                        )
-                    })}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-between">
+                {/* Category Filters - Horizontally scrollable on mobile */}
+                <div className="w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-max sm:flex-wrap sm:justify-center">
+                        {filters.map((filter) => {
+                            const category = eventCategories[filter as keyof typeof eventCategories]
+                            const Icon = category?.icon || Filter
+                            
+                            return (
+                                <button
+                                    key={filter}
+                                    onClick={() => onFilterChange(filter)}
+                                    className={`flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                                        activeFilter === filter
+                                            ? `bg-gradient-to-r ${category?.color || 'from-fulvous to-fulvous-light'} text-white shadow-lg`
+                                            : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                                    }`}
+                                >
+                                    <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                                    <span className="hidden xs:inline sm:inline">{filter.charAt(0).toUpperCase() + filter.slice(1)}</span>
+                                </button>
+                            )
+                        })}
+                    </div>
                 </div>
 
                 {/* View Mode */}

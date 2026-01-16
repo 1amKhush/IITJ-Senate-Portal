@@ -57,7 +57,7 @@ const StatCard: React.FC<StatCardProps> = ({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       whileHover={{ y: -5, transition: { duration: 0.3 } }}
-      className="group relative glass-card rounded-2xl p-6 text-white overflow-hidden"
+      className="group relative glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 text-white overflow-hidden"
     >
       {/* Gradient border effect on hover */}
       <div 
@@ -77,7 +77,7 @@ const StatCard: React.FC<StatCardProps> = ({
         <div className="flex items-center justify-between mb-4">
           {/* Icon with gradient background */}
           <motion.div 
-            className="p-3 rounded-xl relative overflow-hidden"
+            className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl relative overflow-hidden"
             style={{
               background: `linear-gradient(135deg, ${gradientFrom}20, ${gradientTo}10)`,
             }}
@@ -98,7 +98,7 @@ const StatCard: React.FC<StatCardProps> = ({
           {/* Animated count */}
           <div className="text-right">
             <motion.span
-              className="text-4xl font-bold bg-clip-text text-transparent"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent"
               style={{
                 backgroundImage: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
               }}
@@ -108,10 +108,10 @@ const StatCard: React.FC<StatCardProps> = ({
           </div>
         </div>
         
-        <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-white/90 transition-colors">
+        <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 text-white group-hover:text-white/90 transition-colors">
           {title}
         </h3>
-        <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
+        <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{description}</p>
       </div>
 
       {/* Bottom accent line */}
@@ -140,7 +140,7 @@ interface SenateStatsProps {
 const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
   const stats = [
     {
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />,
       title: "Main Councils",
       count: data.mainBodies.length,
       description: "Core governing bodies of the student senate",
@@ -149,7 +149,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       delay: 0,
     },
     {
-      icon: <Building className="w-6 h-6" />,
+      icon: <Building className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />,
       title: "Boards",
       count: data.boards.length,
       description: "Specialized administrative boards",
@@ -158,7 +158,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       delay: 0.1,
     },
     {
-      icon: <Trophy className="w-6 h-6" />,
+      icon: <Trophy className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />,
       title: "Clubs & Committees",
       count: data.clubs.length,
       description: "Active student organizations and committees",
@@ -167,7 +167,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
       delay: 0.2,
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />,
       title: "Total Positions",
       count: data.mainBodies.length + data.boards.length + data.clubs.length,
       description: "Leadership positions across all levels",
@@ -178,7 +178,7 @@ const SenateStats: React.FC<SenateStatsProps> = ({ data }) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}

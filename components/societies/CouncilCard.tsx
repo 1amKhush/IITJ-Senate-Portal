@@ -43,87 +43,87 @@ const CouncilCard: React.FC<{ council: Council }> = ({ council }) => {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseMove={handleMouseMove}
-      className="glass-card rounded-3xl overflow-hidden spotlight-card group"
+      className="glass-card rounded-2xl sm:rounded-3xl overflow-hidden spotlight-card group"
     >
       {/* Top Gradient Accent */}
-      <div className="h-2 bg-gradient-to-r from-blue-500 via-fulvous to-purple-500" />
+      <div className="h-1.5 sm:h-2 bg-gradient-to-r from-blue-500 via-fulvous to-purple-500" />
       
-      <div className="p-8 flex flex-col lg:flex-row gap-8">
+      <div className="p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8">
         {/* Left Content */}
-        <div className="flex-1 flex flex-col gap-6">
+        <div className="flex-1 flex flex-col gap-4 sm:gap-6">
           {/* Header with Icon */}
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             <motion.div 
-              className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20"
+              className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Building2 className="w-7 h-7 text-blue-400" />
+              <Building2 className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-blue-400" />
             </motion.div>
             <div>
-              <h3 className="font-bold text-2xl text-white mb-2 group-hover:text-fulvous transition-colors duration-300">
+              <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-white mb-1.5 sm:mb-2 group-hover:text-fulvous transition-colors duration-300">
                 {title}
               </h3>
-              <div className="w-20 h-1 bg-gradient-to-r from-fulvous to-fulvous-light rounded-full" />
+              <div className="w-14 sm:w-16 md:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-fulvous to-fulvous-light rounded-full" />
             </div>
           </div>
 
           {/* About Section */}
           <motion.div 
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-fulvous/30 transition-all duration-300"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-fulvous/30 transition-all duration-300"
             whileHover={{ y: -2 }}
           >
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-fulvous rounded-full" />
-              <span className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
+            <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-fulvous rounded-full" />
+              <span className="font-semibold text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider">
                 About
               </span>
             </div>
-            <p className="text-gray-300 leading-relaxed">{about}</p>
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{about}</p>
           </motion.div>
 
           {/* Contact Info */}
           <motion.div 
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-purple-500/30 transition-all duration-300"
             whileHover={{ y: -2 }}
           >
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-purple-400 rounded-full" />
-              <span className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
+            <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full" />
+              <span className="font-semibold text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider">
                 Contact
               </span>
             </div>
-            <div className="flex items-center gap-3 mb-2">
-              <User className="w-4 h-4 text-fulvous" />
-              <p className="font-bold text-white text-lg">{holderName}</p>
+            <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
+              <User className="w-3 h-3 sm:w-4 sm:h-4 text-fulvous" />
+              <p className="font-bold text-white text-sm sm:text-base md:text-lg">{holderName}</p>
             </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-gray-500" />
-              <p className="text-gray-400">{contactInfo}</p>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
+              <p className="text-gray-400 text-xs sm:text-sm md:text-base">{contactInfo}</p>
             </div>
           </motion.div>
         </div>
 
         {/* Right Side */}
-        <div className="flex flex-col items-center gap-6 min-w-[280px]">
+        <div className="flex flex-col items-center gap-4 sm:gap-6 w-full lg:min-w-[240px] lg:max-w-[280px]">
           {/* Logo Section */}
           <motion.div 
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-fulvous/30 transition-all duration-300 w-full"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 hover:border-fulvous/30 transition-all duration-300 w-full"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-fulvous/20 to-purple-500/10 flex items-center justify-center border border-white/10 shadow-inner">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto rounded-xl sm:rounded-2xl bg-gradient-to-br from-fulvous/20 to-purple-500/10 flex items-center justify-center border border-white/10 shadow-inner">
               {logoUrl ? (
                 <Image
                   src={logoUrl}
                   alt="Council Logo"
                   width={100}
                   height={100}
-                  className="rounded-xl object-cover"
+                  className="rounded-lg sm:rounded-xl object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
                 />
               ) : (
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-fulvous to-purple-500 rounded-xl mx-auto flex items-center justify-center">
-                    <Building2 className="w-8 h-8 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br from-fulvous to-purple-500 rounded-lg sm:rounded-xl mx-auto flex items-center justify-center">
+                    <Building2 className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
                   </div>
                 </div>
               )}
@@ -131,14 +131,14 @@ const CouncilCard: React.FC<{ council: Council }> = ({ council }) => {
           </motion.div>
 
           {/* Social Links */}
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 w-full hover:border-white/20 transition-all duration-300">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="font-bold text-gray-400 text-xs uppercase tracking-wider">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 w-full hover:border-white/20 transition-all duration-300">
+            <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
+              <span className="font-bold text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider">
                 Connect
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-2 justify-center mb-4">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center mb-3 sm:mb-4">
               {socialLinks.length > 0 ? (
                 socialLinks.map((link, index) => (
                   <motion.a

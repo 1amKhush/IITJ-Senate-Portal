@@ -236,27 +236,27 @@ export default function TreePage() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Premium Section Header */}
-        <div className="text-center mb-12 pt-20">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 pt-16 sm:pt-20">
           {/* Decorative top line */}
           <motion.div 
-            className="flex items-center justify-center gap-4 mb-6"
+            className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <motion.div 
-              className="h-px w-16 bg-gradient-to-r from-transparent to-fulvous"
+              className="h-px w-8 sm:w-12 md:w-16 bg-gradient-to-r from-transparent to-fulvous"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             />
-            <span className="text-fulvous text-sm font-semibold tracking-[0.3em] uppercase">
+            <span className="text-fulvous text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.3em] uppercase">
               Organizational Structure
             </span>
             <motion.div 
-              className="h-px w-16 bg-gradient-to-l from-transparent to-fulvous"
+              className="h-px w-8 sm:w-12 md:w-16 bg-gradient-to-l from-transparent to-fulvous"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -264,7 +264,7 @@ export default function TreePage() {
           </motion.div>
 
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -273,7 +273,7 @@ export default function TreePage() {
           </motion.h1>
 
           <motion.p 
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -284,21 +284,21 @@ export default function TreePage() {
 
           {/* Glass Morphism Search Bar */}
           <motion.div 
-            className="relative w-full max-w-xl mx-auto"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-xl mx-auto px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
               <input
                 type="text"
-                placeholder="Search councils, boards, clubs, or holders..."
+                placeholder="Search councils, boards, clubs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                className="w-full pl-12 pr-12 py-4 glass-card rounded-2xl text-white placeholder-gray-500 border border-white/10 focus:border-fulvous/50 focus:outline-none focus:ring-2 focus:ring-fulvous/20 transition-all duration-300"
+                className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 glass-card rounded-xl sm:rounded-2xl text-sm sm:text-base text-white placeholder-gray-500 border border-white/10 focus:border-fulvous/50 focus:outline-none focus:ring-2 focus:ring-fulvous/20 transition-all duration-300"
               />
               {searchTerm && (
                 <button
