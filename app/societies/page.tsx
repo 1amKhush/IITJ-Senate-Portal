@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
 import { 
     Search, X, ChevronDown, ChevronUp, 
     Building2, Users, Sparkles, 
@@ -272,7 +273,7 @@ const BoardCard: React.FC<{ board: BoardType; index: number }> = ({ board, index
                         whileHover={{ scale: 1.05 }}
                     >
                         {board.imageurl ? (
-                            <img src={board.imageurl} alt={board.title} className="w-12 h-12 rounded-lg object-cover" />
+                            <Image src={board.imageurl} alt={board.title} width={48} height={48} className="w-12 h-12 rounded-lg object-cover" />
                         ) : (
                             <Layers className="w-8 h-8 text-green-400" />
                         )}

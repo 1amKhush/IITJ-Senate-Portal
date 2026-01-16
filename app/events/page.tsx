@@ -4,12 +4,11 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { 
-    Calendar, Clock, MapPin, ExternalLink, ChevronDown, 
+    Calendar, ExternalLink, ChevronDown, 
     Sparkles, Star, ArrowUp, Filter, Grid3X3, LayoutList,
-    Music, Palette, Trophy, BookOpen, Code, Users, Zap, Heart
+    Music, Trophy, BookOpen, Code, Zap, Heart
 } from 'lucide-react'
 import { fests } from '@/data/fests'
-import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
 // Event category icons and colors
